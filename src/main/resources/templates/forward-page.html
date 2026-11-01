@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- 引入Thymeleaf命名空间，开启模板语法支持 -->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>转发页面</title>
+    </head>
+    <body>
+        <h3>✅ 转发跳转成功</h3>
+        <p>核心特征：浏览器地址栏URL仍为 /jump/toForward（未变化）</p>
+
+
+        <!-- 渲染Request域中的a1数据 -->
+        <p>动态提示：<span th:text="${a1}"></span></p>
+
+        <!-- 渲染Session域中的b数据 -->
+        <p>动态提示：<span th:text="${session.b1}"></span></p>
+
+
+        <!-- 渲染ServletContext全局域中的数据 -->
+        <p>全局提示：<span th:text="${application.c1}"></span></p>
+    </body>
+</html>
