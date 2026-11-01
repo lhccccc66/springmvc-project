@@ -1,0 +1,21 @@
+# 统一行尾策略:仓库内一律 LF,检出时按平台转换
+# 这样 GitHub 上显示的 diff 干净,面试官 clone 下来不会看到全文件改动
+* text=auto eol=lf
+
+*.java text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.properties text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.sql text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.jar binary
