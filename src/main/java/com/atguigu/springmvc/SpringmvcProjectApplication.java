@@ -1,12 +1,14 @@
 package com.atguigu.springmvc;
 
 import com.atguigu.springmvc.controller.LoginController;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@MapperScan(basePackages = "com.atguigu.springmvc.mapper")
 //@ComponentScan(value = {"com.atguigu.spring.user","com.atguigu.spring.order"}) //自定义设置扫描包位置  不推荐。
 public class SpringmvcProjectApplication {
 

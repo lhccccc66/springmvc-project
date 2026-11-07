@@ -1,10 +1,8 @@
 package com.atguigu.springmvc.service;
 
-import com.atguigu.springmvc.dao.SysUserDao;
-import com.atguigu.springmvc.dao.SysUserDaoImpl;
+import com.atguigu.springmvc.mapper.SysUserMapper;
 import com.atguigu.springmvc.entities.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,33 +11,33 @@ import java.util.List;
 public class SysUserServiceImpl implements SysUserService {
 
     @Autowired
-    SysUserDao sysUserDao;
+    SysUserMapper sysUserMapper;
 
     @Override
     public boolean deleteById(Long id) {
-        return sysUserDao.deleteById(id);
+        return sysUserMapper.deleteById(id)>0?true:false;
     }
 
     @Override
     public SysUser getById(Long id) {
-        return sysUserDao.getById(id);
+        return sysUserMapper.getById(id);
     }
 
     @Override
     public boolean updateById(Long id, SysUser sysUser) {
-        if (sysUserDao.getById(id) == null) {
+        if (sysUserMapper.getById(id) == null) {
             return false;
         }
-        return sysUserDao.updateById(id, sysUser);
+        return sysUserMapper.updateById(id, sysUser)>0?true:false;
     }
 
     @Override
     public SysUser save(SysUser sysUser) {
-        return sysUserDao.save(sysUser);
+        return sysUserMapper.save(sysUser);
     }
 
     @Override
     public List<SysUser> findUserList(String username, String phone, Integer status) {
-        return sysUserDao.findUserList(username, phone, status);
+        return sysUserMapper.findUserList(username, phone, status);
     }
 }
