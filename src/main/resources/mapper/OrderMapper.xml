@@ -8,7 +8,7 @@
         <result column="order_name" property="orderName"></result>
 
         <association property="customer" javaType="com.atguigu.springmvc.entities.Customer">
-            <id column="tc.customer_id" property="customerId"></id>
+            <id column="customer_id" property="customerId"></id>
             <result column="customer_name" property="customerName"></result>
         </association>
     </resultMap>
