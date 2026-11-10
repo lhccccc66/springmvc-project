@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springmvc.mapper.OrderMapper">
+    <resultMap id="OrderResultMap" type="com.atguigu.springmvc.entities.Order">
+        <id column="order_id" property="orderId"></id>
+        <result column="order_name" property="orderName"></result>
+
+        <association property="customer" javaType="com.atguigu.springmvc.entities.Customer">
+            <id column="tc.customer_id" property="customerId"></id>
+            <result column="customer_name" property="customerName"></result>
+        </association>
+    </resultMap>
+    
+    
+    <select id="selectOrderWithCustomer" resultMap="OrderResultMap">
+        select t_order.order_id, t_order.order_name, tc.customer_id, tc.customer_name
+        from t_order
+        left join db_demo_crud.t_customer tc on t_order.customer_id = tc.customer_id
+        where t_order.order_id = #{orderId}
+    </select>
+</mapper>
