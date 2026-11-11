@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springmvc.mapper.CustomerMapper">
+    <resultMap id="CustomerResultMap" type="com.atguigu.springmvc.entities.Customer">
+        <id column="customer_id" property="customerId"></id>
+        <result column="customer_name" property="customerName"></result>
+
+        <!-- 一对多:一个客户有多个订单 -->
+        <collection property="orderList" ofType="com.atguigu.springmvc.entities.Order">
+            <id column="order_id" property="orderId"></id>
+            <result column="order_name" property="orderName"></result>
+        </collection>
+    </resultMap>
+
+    <select id="selectCustomerWithOrderList" resultMap="CustomerResultMap">
+        select tc.customer_id,
+               tc.customer_name,
+               o.order_id,
+               o.order_name
+        from t_customer tc
+                 left join t_order o on tc.customer_id = o.customer_id
+        where tc.customer_id = #{customerId}
+    </select>
+</mapper>
