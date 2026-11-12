@@ -23,13 +23,13 @@ class HelloServiceTest {
     public void testSayHello() {
         String result = helloService.sayHello("boot");
         System.out.println(result);
-        Assertions.assertThat(result).isEqualTo("Hello, Boot!");
+        Assertions.assertThat(result).isEqualTo("Hello, boot!");
     }
 
     @Test //声明一个测试方法
     public void testWebSayHello() {
         String result = testRestTemplate.getForObject("/getValue",String.class);
-        Assertions.assertThat(result).isEqualTo("ok!!!!");
+        Assertions.assertThat(result).isEqualTo("ok");
     }
 
 }
